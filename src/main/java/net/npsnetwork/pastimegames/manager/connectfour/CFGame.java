@@ -20,6 +20,8 @@ public class CFGame {
     private Player player2;
     private ItemStack turnTrue;
     private ItemStack turnFalse;
+    private ItemStack chipTrue;
+    private ItemStack chipFalse;
     private boolean turn;
 
     protected CFGame(Player player1, Player player2) {
@@ -42,7 +44,8 @@ public class CFGame {
         //init dummy-item
         ItemStack _void = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta _void_meta = _void.getItemMeta();
-        _void_meta.setDisplayName(" ");
+        _void_meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                Main.getPlugin().getConfig().getString("connectfour.items.placeholder.displayName")));
         //ArrayList<String> _void_lore = new ArrayList<>();
         //_void_meta.setLore(_void_lore);
         _void.setItemMeta(_void_meta);
