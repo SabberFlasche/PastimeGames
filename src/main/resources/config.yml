@@ -1,0 +1,22 @@
+#Configfile of PastimeGames - change settings here
+#If any setting is wrong the default will be used
+standalone: false
+reload-message: "&aConfig successfully reloaded"
+connectfour:
+  invTitle: "Connect 4:"
+  items:
+    placeholder:
+      material: GRAY_STAINED_GLASS_PANE
+      displayName: " "
+    yourTurn:
+      material: LIME_STAINED_GLASS_PANE
+      displayName: "&aYour turn"
+    opponentsTurn:
+      material: GLASS_PANE
+      displayName: "&fWait for your opponent to make a move"
+    yourChipItem:
+      material: ENDER_PEARL
+      displayName: " "
+    opponentsChipItem:
+      material: SNOWBALL
+      displayName: " "
