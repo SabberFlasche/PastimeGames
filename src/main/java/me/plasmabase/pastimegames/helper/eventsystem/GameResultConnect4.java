@@ -1,6 +1,5 @@
-package net.npsnetwork.pastimegames.helper.eventsystem;
+package me.plasmabase.pastimegames.helper.eventsystem;
 
-import net.npsnetwork.pastimegames.manager.GameManager;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

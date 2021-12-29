@@ -1,4 +1,4 @@
-package net.npsnetwork.pastimegames.helper;
+package me.plasmabase.pastimegames.helper;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;

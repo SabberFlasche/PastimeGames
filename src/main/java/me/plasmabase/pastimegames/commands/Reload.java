@@ -1,6 +1,6 @@
-package net.npsnetwork.pastimegames.commands;
+package me.plasmabase.pastimegames.commands;
 
-import net.npsnetwork.pastimegames.Main;
+import me.plasmabase.pastimegames.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

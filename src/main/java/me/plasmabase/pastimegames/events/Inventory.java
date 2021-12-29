@@ -1,6 +1,6 @@
-package net.npsnetwork.pastimegames.events;
+package me.plasmabase.pastimegames.events;
 
-import net.npsnetwork.pastimegames.manager.GameManager;
+import me.plasmabase.pastimegames.manager.GameManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

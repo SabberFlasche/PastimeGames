@@ -1,4 +1,4 @@
-package net.npsnetwork.pastimegames.manager;
+package me.plasmabase.pastimegames.manager;
 
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

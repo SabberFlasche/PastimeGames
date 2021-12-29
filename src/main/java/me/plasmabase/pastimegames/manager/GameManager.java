@@ -1,7 +1,8 @@
-package net.npsnetwork.pastimegames.manager;
+package me.plasmabase.pastimegames.manager;
 
-import net.npsnetwork.pastimegames.helper.eventsystem.EventManager;
-import net.npsnetwork.pastimegames.helper.eventsystem.GameResult;
+import me.plasmabase.pastimegames.helper.eventsystem.EventListener;
+import me.plasmabase.pastimegames.helper.eventsystem.EventManager;
+import me.plasmabase.pastimegames.helper.eventsystem.GameResult;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -15,7 +16,7 @@ public class GameManager {
      * Event GameEnded:
      * Called when any Game ends after the game has been removed from all Managers
      * Use GameManger.gameEnded.subscribe(new YourClass()) to add a listener (YourClass has to implement
-     * {@linkplain net.npsnetwork.pastimegames.helper.eventsystem.EventListener<GameResult> EventListener}
+     * {@linkplain EventListener <GameResult> EventListener}
      */
     public static EventManager<GameResult> gameEnded = new EventManager<>();
 

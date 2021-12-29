@@ -1,4 +1,4 @@
-package net.npsnetwork.pastimegames.exceptions;
+package me.plasmabase.pastimegames.exceptions;
 
 public class EventListenerAlreadyBoundException extends Exception{
     public EventListenerAlreadyBoundException() {

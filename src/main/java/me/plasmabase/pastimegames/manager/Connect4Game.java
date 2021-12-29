@@ -1,8 +1,8 @@
-package net.npsnetwork.pastimegames.manager;
+package me.plasmabase.pastimegames.manager;
 
-import net.npsnetwork.pastimegames.Main;
-import net.npsnetwork.pastimegames.helper.Glow;
-import net.npsnetwork.pastimegames.helper.eventsystem.GameResultConnect4;
+import me.plasmabase.pastimegames.Main;
+import me.plasmabase.pastimegames.helper.Glow;
+import me.plasmabase.pastimegames.helper.eventsystem.GameResultConnect4;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

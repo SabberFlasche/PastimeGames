@@ -1,6 +1,6 @@
-package net.npsnetwork.pastimegames.helper.eventsystem;
+package me.plasmabase.pastimegames.helper.eventsystem;
 
-import net.npsnetwork.pastimegames.exceptions.EventListenerAlreadyBoundException;
+import me.plasmabase.pastimegames.exceptions.EventListenerAlreadyBoundException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

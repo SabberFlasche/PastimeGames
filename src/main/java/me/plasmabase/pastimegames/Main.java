@@ -1,11 +1,10 @@
-package net.npsnetwork.pastimegames;
+package me.plasmabase.pastimegames;
 
-import net.npsnetwork.pastimegames.commands.Reload;
-import net.npsnetwork.pastimegames.events.Inventory;
-import net.npsnetwork.pastimegames.helper.Glow;
-import net.npsnetwork.pastimegames.manager.Game;
-import net.npsnetwork.pastimegames.manager.GameManager;
-import net.npsnetwork.pastimegames.manager.Connect4Game;
+import me.plasmabase.pastimegames.events.Inventory;
+import me.plasmabase.pastimegames.manager.GameManager;
+import me.plasmabase.pastimegames.commands.Reload;
+import me.plasmabase.pastimegames.helper.Glow;
+import me.plasmabase.pastimegames.manager.Game;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;

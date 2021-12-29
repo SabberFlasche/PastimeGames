@@ -1,4 +1,4 @@
-package net.npsnetwork.pastimegames.helper.eventsystem;
+package me.plasmabase.pastimegames.helper.eventsystem;
 
 import org.jetbrains.annotations.NotNull;
 
