@@ -44,6 +44,19 @@ public class Connect4Game extends Game {
         openInventories();
     }
 
+    protected Connect4Game(@NotNull Player player1, @NotNull Player player2, @NotNull String customInvTitle) {
+        this.player1 = player1;
+        this.player2 = player2;
+        window1 = Bukkit.createInventory(null, 6 * 9, customInvTitle);
+        window2 = Bukkit.createInventory(null, 6 * 9, customInvTitle);
+        determineFirstTurn();
+        initMainWindow();
+        updateTurnItems();
+        running = true;
+        placing = false;
+        openInventories();
+    }
+
     private void determineFirstTurn() {
         Random random = new Random();
         turn = random.nextBoolean();

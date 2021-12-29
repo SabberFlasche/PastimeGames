@@ -47,7 +47,40 @@ public class GameManager {
                 Connect4Game game = new Connect4Game(player1, player2);
                 games.add(game);
                 return game;
-            case TICTACTOE:
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * Creates a game of given type and starts it directly.
+     * If the player1 and player2 are the same or one player is already in a game the game won't be
+     * created and returns null.
+     * @param player1 player1
+     * @param player2 player2
+     * @param customInvTitle custom String to use as title in the inventory
+     * @return The {@link Game} if player1 and player2 are different Players,
+     * and they are not already in a game.
+     */
+    public static @Nullable Game createGame(@NotNull GameType gameType, @NotNull Player player1, @NotNull Player player2, @NotNull String customInvTitle) {
+        for (Game game : games) {
+            if (game.isInGame(player1)) {
+                return null;
+            }
+            if (game.isInGame(player2)) {
+                return null;
+            }
+        }
+
+        if (player1.equals(player2)) {
+            return null;
+        }
+
+        switch (gameType) {
+            case CONNECT4:
+                Connect4Game game = new Connect4Game(player1, player2, customInvTitle);
+                games.add(game);
+                return game;
             default:
                 return null;
         }
