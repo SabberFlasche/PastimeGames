@@ -36,7 +36,6 @@ public class EventManager<T> {
      */
     public void call(@NotNull T arg) {
         for (EventListener<T> event : events) {
-            System.out.println("call");
             event.onCall(arg);
         }
     }

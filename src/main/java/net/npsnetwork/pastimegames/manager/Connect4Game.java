@@ -1,9 +1,8 @@
-package net.npsnetwork.pastimegames.manager.connectfour;
+package net.npsnetwork.pastimegames.manager;
 
 import net.npsnetwork.pastimegames.Main;
 import net.npsnetwork.pastimegames.helper.Glow;
 import net.npsnetwork.pastimegames.helper.eventsystem.GameResultConnect4;
-import net.npsnetwork.pastimegames.manager.GameManager;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -17,7 +16,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Connect4Game {
+public class Connect4Game extends Game {
     private Inventory window1;
     private Inventory window2;
     private Player player1;
@@ -50,7 +49,8 @@ public class Connect4Game {
         turn = random.nextBoolean();
     }
 
-    private void initMainWindow() {
+    @Override
+    protected void initMainWindow() {
         //init placeholder-item
         ItemStack _void = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta _void_meta = _void.getItemMeta();
@@ -147,19 +147,21 @@ public class Connect4Game {
         }
     }
 
+    @Override
     protected void openInventories() {
         player1.openInventory(window1);
         player2.openInventory(window2);
     }
 
-    protected void openInventories(boolean selected) {
+    /*protected void openInventories(boolean selected) {
         if (selected) {
             player1.openInventory(window1);
         }else {
             player2.openInventory(window2);
         }
-    }
+    }*/
 
+    @Override
     protected void onClick(int slot, @NotNull Player player) {
         int column = getColumns(slot);
 
@@ -177,13 +179,14 @@ public class Connect4Game {
 
     }
 
+    @Override
     protected void onCloseInventory(@NotNull Player player) {
         if (player.equals(player1)) {
             player2.closeInventory();
         }else {
             player1.closeInventory();
         }
-        Connect4Manager.removeGame(this);
+        GameManager.removeGame(this);
     }
 
     private int getColumns(int slot) {
@@ -211,6 +214,7 @@ public class Connect4Game {
      * @param player Player to check
      * @return true if the Player {@link Connect4Game#isInGame(Player) isInGame} and it is his turn to make a move
      */
+    @Override
     public boolean isTurn(@NotNull Player player) {
         if (isInGame(player)) {
             Player[] players = getPlayers();
@@ -223,6 +227,7 @@ public class Connect4Game {
      * Gets List of all Players who participate in this game
      * @return {@link Array} of all Players
      */
+    @Override
     public @NotNull Player[] getPlayers() {
         Player[] list = new Player[2];
         list[0] = player1;
@@ -234,6 +239,7 @@ public class Connect4Game {
      * @param search player to search for
      * @return true if the player is in this particular game
      */
+    @Override
     public boolean isInGame(@NotNull Player search) {
         for (Player player : getPlayers()) {
             if (player.equals(search)) {
@@ -301,6 +307,7 @@ public class Connect4Game {
      * At the end the Event {@link GameManager#gameEnded} is called
      * @param winner
      */
+    @Override
     public void endGame(@Nullable Player winner) {
         if (player1.getOpenInventory().getTitle().equalsIgnoreCase(
                 ChatColor.translateAlternateColorCodes('&',
@@ -312,7 +319,7 @@ public class Connect4Game {
                         Main.getPlugin().getConfig().getString("connectfour.invTitle")))) {
             player2.closeInventory();
         }
-        Connect4Manager.removeGame(this);
+        GameManager.removeGame(this);
         GameManager.gameEnded.call(new GameResultConnect4(winner, this.getPlayers()));
     }
 

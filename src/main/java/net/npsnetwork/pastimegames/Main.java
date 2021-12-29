@@ -3,8 +3,9 @@ package net.npsnetwork.pastimegames;
 import net.npsnetwork.pastimegames.commands.Reload;
 import net.npsnetwork.pastimegames.events.Inventory;
 import net.npsnetwork.pastimegames.helper.Glow;
+import net.npsnetwork.pastimegames.manager.Game;
 import net.npsnetwork.pastimegames.manager.GameManager;
-import net.npsnetwork.pastimegames.manager.connectfour.Connect4Game;
+import net.npsnetwork.pastimegames.manager.Connect4Game;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -35,7 +36,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        for (Connect4Game game : GameManager.getAllConnect4Games()) {
+        for (Game game : GameManager.getAllGames()) {
             game.endGame(null);
         }
     }

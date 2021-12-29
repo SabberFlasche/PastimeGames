@@ -1,6 +1,6 @@
 package net.npsnetwork.pastimegames.events;
 
-import net.npsnetwork.pastimegames.manager.connectfour.Connect4Manager;
+import net.npsnetwork.pastimegames.manager.GameManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,18 +12,18 @@ public class Inventory implements Listener {
     @EventHandler
     public void onInvClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
-        Connect4Manager.onCloseInventory(player);
+        GameManager.onCloseInventory(player);
     }
 
     @EventHandler
     public void onInvClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        event.setCancelled(Connect4Manager.onClick(event.getSlot(), player));
+        event.setCancelled(GameManager.onClick(event.getSlot(), player));
     }
 
     @EventHandler
     public void onInvDrag(InventoryDragEvent event) {
         Player player = (Player) event.getWhoClicked();
-        event.setCancelled(Connect4Manager.onDrag(player));
+        event.setCancelled(GameManager.onDrag(player));
     }
 }
