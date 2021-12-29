@@ -5,8 +5,8 @@ api-version: 1.18
 prefix: PastimeGames
 authors: [ PlasmaBase ]
 description: Collection of games to implement in your server as Library or Standalone
+website: https://github.com/SabberFlasche/PastimeGames/
 commands:
   pastimegames:
     usage: /pastimegames reload
     description: Reloads config of PastimeGames
-  test:
