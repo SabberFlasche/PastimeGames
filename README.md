@@ -1,5 +1,7 @@
 # PastimeGames
-Minecraft Spigot Plugin: Collection of minigames to play while you wait for something for example in a Lobby.
-Standalone Plugin- or Librarymode possible.
+Minecraft Spigot Plugin: Collection of minigames to play.
 
-Feel free to use this plugin on a server but don't copy and paste without permission.
+Current Games:
+  - Connect4
+Planned Games:
+  - TicTacToe
