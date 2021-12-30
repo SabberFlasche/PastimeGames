@@ -195,9 +195,13 @@ public class Connect4Game extends Game {
     @Override
     protected void onCloseInventory(@NotNull Player player) {
         if (player.equals(player1)) {
-            player2.closeInventory();
+            try {
+                player2.closeInventory();
+            }catch (Exception ignored) {}
         }else {
-            player1.closeInventory();
+            try {
+                player1.closeInventory();
+            }catch (Exception ignored) {}
         }
         GameManager.removeGame(this);
     }
@@ -316,7 +320,7 @@ public class Connect4Game extends Game {
     }
 
     /**
-     * Closes all inventories and removes the game from {@link GameManager#getAllConnect4Games()}.
+     * Closes all inventories and removes the game from {@link GameManager#getAllGames()}.
      * At the end the Event {@link GameManager#gameEnded} is called
      * @param winner
      */
@@ -418,7 +422,7 @@ public class Connect4Game extends Game {
         }
         currentSlot = slot;
         currentSlot -= 8;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (currentSlot > 1 && inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
             tmpSlots.add(currentSlot);
             currentSlot -= 8;
             if (currentSlot < 2) {
@@ -441,7 +445,7 @@ public class Connect4Game extends Game {
         }
         currentSlot = slot;
         currentSlot -= 10;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (currentSlot > 1 && inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
             tmpSlots.add(currentSlot);
             currentSlot -= 10;
             if (currentSlot < 2) {
