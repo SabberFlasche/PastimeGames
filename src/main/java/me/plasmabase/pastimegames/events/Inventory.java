@@ -1,6 +1,8 @@
 package me.plasmabase.pastimegames.events;
 
+import me.plasmabase.pastimegames.Main;
 import me.plasmabase.pastimegames.manager.GameManager;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,7 +14,10 @@ public class Inventory implements Listener {
     @EventHandler
     public void onInvClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
-        GameManager.onCloseInventory(player);
+        if (player.getOpenInventory().getTitle().equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&',
+                Main.getPlugin().getConfig().getString("connectfour.invTitle")))) {
+            GameManager.onCloseInventory(player);
+        }
     }
 
     @EventHandler
