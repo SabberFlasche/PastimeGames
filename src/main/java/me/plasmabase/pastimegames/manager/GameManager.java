@@ -124,11 +124,13 @@ public class GameManager {
     }
 
     public static void onCloseInventory(@NotNull Player player) {
-        for (Game game : games) {
-            if (game.isInGame(player)) {
-                game.onCloseInventory(player);
+        try {
+            for (Game game : games) {
+                if (game.isInGame(player)) {
+                    game.onCloseInventory(player);
+                }
             }
-        }
+        }catch (Exception ignored) {}
     }
 
     public static boolean onDrag(@NotNull Player player) {

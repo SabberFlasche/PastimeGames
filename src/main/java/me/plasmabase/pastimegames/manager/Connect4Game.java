@@ -194,6 +194,7 @@ public class Connect4Game extends Game {
 
     @Override
     protected void onCloseInventory(@NotNull Player player) {
+        GameManager.removeGame(this);
         if (player.equals(player1)) {
             try {
                 player2.closeInventory();
@@ -203,7 +204,6 @@ public class Connect4Game extends Game {
                 player1.closeInventory();
             }catch (Exception ignored) {}
         }
-        GameManager.removeGame(this);
     }
 
     private int getColumns(int slot) {
