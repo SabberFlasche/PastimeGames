@@ -159,14 +159,6 @@ public class Connect4Game extends Game {
         player2.openInventory(window2);
     }
 
-    /*protected void openInventories(boolean selected) {
-        if (selected) {
-            player1.openInventory(window1);
-        }else {
-            player2.openInventory(window2);
-        }
-    }*/
-
     @Override
     protected void onClick(int slot, @NotNull Player player) {
         int column = getColumns(slot);
