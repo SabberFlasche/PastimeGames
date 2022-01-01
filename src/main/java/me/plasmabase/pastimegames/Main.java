@@ -5,6 +5,7 @@ import me.plasmabase.pastimegames.manager.GameManager;
 import me.plasmabase.pastimegames.commands.Reload;
 import me.plasmabase.pastimegames.helper.Glow;
 import me.plasmabase.pastimegames.manager.Game;
+import me.plasmabase.pastimegames.manager.SettingsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
@@ -16,8 +17,13 @@ import java.lang.reflect.Field;
 public final class Main extends JavaPlugin {
 
     public static Main plugin;
-    public static Main getPlugin() {
+    public static Main plugin() {
         return plugin;
+    }
+
+    private static SettingsManager settingsManager;
+    public static SettingsManager settingsManager() {
+        return settingsManager;
     }
 
     @Override
@@ -31,6 +37,8 @@ public final class Main extends JavaPlugin {
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new Inventory(), this);
         registerGlow();
+
+        settingsManager = new SettingsManager();
     }
 
     @Override

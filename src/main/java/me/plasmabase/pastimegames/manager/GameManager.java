@@ -1,5 +1,6 @@
 package me.plasmabase.pastimegames.manager;
 
+import me.plasmabase.pastimegames.Main;
 import me.plasmabase.pastimegames.helper.eventsystem.EventListener;
 import me.plasmabase.pastimegames.helper.eventsystem.EventManager;
 import me.plasmabase.pastimegames.helper.eventsystem.GameResult;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class GameManager {
 
     private static final ArrayList<Game> games = new ArrayList<>();
+
     /**
      * Event GameEnded:
      * Called when any Game ends after the game has been removed from all Managers
@@ -93,6 +95,13 @@ public class GameManager {
      */
     public static @NotNull ArrayList<Game> getAllGames() {
         return games;
+    }
+
+    /**
+     * @return SettingsManager of PastimeGamesAPI
+     */
+    public static @NotNull SettingsManager getSettingsManager() {
+        return Main.settingsManager();
     }
 
     /**
