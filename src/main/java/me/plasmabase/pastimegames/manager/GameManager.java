@@ -18,7 +18,7 @@ public class GameManager {
      * Event GameEnded:
      * Called when any Game ends after the game has been removed from all Managers
      * Use GameManger.gameEnded.subscribe(new YourClass()) to add a listener (YourClass has to implement
-     * {@linkplain EventListener <GameResult> EventListener}
+     * {@linkplain EventListener<GameResult>}
      */
     public static EventManager<GameResult> gameEnded = new EventManager<>();
 
