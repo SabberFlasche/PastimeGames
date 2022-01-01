@@ -15,7 +15,7 @@ public abstract class Game {
     /**
      * Checks if the Player even is in this game and then checks if the Player has to make the next move
      * @param player Player to check
-     * @return true if the Player {@link GameConnect4#isInGame(Player) isInGame} and it is his turn to make a move
+     * @return true if the Player {@link Connect4Game#isInGame(Player) isInGame} and it is his turn to make a move
      */
     public abstract boolean isTurn(@NotNull Player player);
 

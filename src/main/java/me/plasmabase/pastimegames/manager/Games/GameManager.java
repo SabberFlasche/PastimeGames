@@ -48,7 +48,7 @@ public class GameManager {
 
         switch (gameType) {
             case CONNECT4:
-                GameConnect4 game = new GameConnect4(player1, player2);
+                Connect4Game game = new Connect4Game(player1, player2);
                 games.add(game);
                 return game;
             default:
@@ -82,7 +82,7 @@ public class GameManager {
 
         switch (gameType) {
             case CONNECT4:
-                GameConnect4 game = new GameConnect4(player1, player2, customInvTitle);
+                Connect4Game game = new Connect4Game(player1, player2, customInvTitle);
                 games.add(game);
                 return game;
             default:
