@@ -6,12 +6,12 @@
 
     <groupId>me.plasmabase</groupId>
     <artifactId>PastimeGames</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>PastimeGames</name>
 
-    <description>Collection of games to implement in your server as Library or Standalone</description>
+    <description>Collection of games to implement in your server as Library</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
