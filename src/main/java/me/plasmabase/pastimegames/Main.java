@@ -2,7 +2,6 @@ package me.plasmabase.pastimegames;
 
 import me.plasmabase.pastimegames.events.Inventory;
 import me.plasmabase.pastimegames.manager.GameManager;
-import me.plasmabase.pastimegames.commands.Reload;
 import me.plasmabase.pastimegames.helper.Glow;
 import me.plasmabase.pastimegames.manager.Game;
 import me.plasmabase.pastimegames.manager.SettingsManager;
@@ -31,8 +30,6 @@ public final class Main extends JavaPlugin {
         plugin = this;
 
         this.saveDefaultConfig();
-
-        getCommand("pastimegames").setExecutor(new Reload());
 
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new Inventory(), this);
