@@ -24,7 +24,7 @@ public class EventManager<T> {
      *Unsubscribes an Event
      * @param listener listener to remove
      * @return true if the listener got removed
-     * @see {@link ArrayList}
+     * @see java.util.ArrayList
      */
     public boolean unSubscribe(@NotNull EventListener<T> listener) {
         return events.remove(listener);
