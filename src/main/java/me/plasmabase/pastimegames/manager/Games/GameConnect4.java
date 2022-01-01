@@ -1,4 +1,4 @@
-package me.plasmabase.pastimegames.manager;
+package me.plasmabase.pastimegames.manager.Games;
 
 import me.plasmabase.pastimegames.Main;
 import me.plasmabase.pastimegames.helper.Glow;
@@ -16,7 +16,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Connect4Game extends Game {
+public class GameConnect4 extends Game {
     private Inventory window1;
     private Inventory window2;
     private Player player1;
@@ -29,7 +29,7 @@ public class Connect4Game extends Game {
     private boolean running;
     private boolean placing;
 
-    protected Connect4Game(@NotNull Player player1, @NotNull Player player2) {
+    protected GameConnect4(@NotNull Player player1, @NotNull Player player2) {
         this.player1 = player1;
         this.player2 = player2;
         window1 = Bukkit.createInventory(null, 6 * 9, Main.settingsManager().connect4InventoryTitle());
@@ -42,7 +42,7 @@ public class Connect4Game extends Game {
         openInventories();
     }
 
-    protected Connect4Game(@NotNull Player player1, @NotNull Player player2, @NotNull String customInvTitle) {
+    protected GameConnect4(@NotNull Player player1, @NotNull Player player2, @NotNull String customInvTitle) {
         this.player1 = player1;
         this.player2 = player2;
         window1 = Bukkit.createInventory(null, 6 * 9, customInvTitle);
@@ -216,7 +216,7 @@ public class Connect4Game extends Game {
     /**
      * Checks if the Player even is in this game and then checks if the Player has to make the next move
      * @param player Player to check
-     * @return true if the Player {@link Connect4Game#isInGame(Player) isInGame} and it is his turn to make a move
+     * @return true if the Player {@link GameConnect4#isInGame(Player) isInGame} and it is his turn to make a move
      */
     @Override
     public boolean isTurn(@NotNull Player player) {

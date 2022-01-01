@@ -1,9 +1,10 @@
-package me.plasmabase.pastimegames.manager;
+package me.plasmabase.pastimegames.manager.Games;
 
 import me.plasmabase.pastimegames.Main;
 import me.plasmabase.pastimegames.helper.eventsystem.EventListener;
 import me.plasmabase.pastimegames.helper.eventsystem.EventManager;
 import me.plasmabase.pastimegames.helper.eventsystem.GameResult;
+import me.plasmabase.pastimegames.manager.SettingsManager;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -47,7 +48,7 @@ public class GameManager {
 
         switch (gameType) {
             case CONNECT4:
-                Connect4Game game = new Connect4Game(player1, player2);
+                GameConnect4 game = new GameConnect4(player1, player2);
                 games.add(game);
                 return game;
             default:
@@ -81,7 +82,7 @@ public class GameManager {
 
         switch (gameType) {
             case CONNECT4:
-                Connect4Game game = new Connect4Game(player1, player2, customInvTitle);
+                GameConnect4 game = new GameConnect4(player1, player2, customInvTitle);
                 games.add(game);
                 return game;
             default:

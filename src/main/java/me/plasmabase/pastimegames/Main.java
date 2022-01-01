@@ -1,9 +1,9 @@
 package me.plasmabase.pastimegames;
 
 import me.plasmabase.pastimegames.events.Inventory;
-import me.plasmabase.pastimegames.manager.GameManager;
+import me.plasmabase.pastimegames.manager.Games.GameManager;
 import me.plasmabase.pastimegames.helper.Glow;
-import me.plasmabase.pastimegames.manager.Game;
+import me.plasmabase.pastimegames.manager.Games.Game;
 import me.plasmabase.pastimegames.manager.SettingsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;

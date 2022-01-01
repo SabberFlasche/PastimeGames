@@ -1,7 +1,7 @@
 package me.plasmabase.pastimegames.events;
 
 import me.plasmabase.pastimegames.Main;
-import me.plasmabase.pastimegames.manager.GameManager;
+import me.plasmabase.pastimegames.manager.Games.GameManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
