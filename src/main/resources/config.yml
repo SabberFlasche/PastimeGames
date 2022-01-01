@@ -1,9 +1,11 @@
-#Configfile of PastimeGames - change settings here
-#If any setting is wrong the default will be used
-#DON'T CHANGE VERSION
-version: "0.0.1"
+                      version: "0.0.2"
 reload-message: "&aConfig successfully reloaded"
-connectfour:
+permissions:
+  reload: "pastimegames.reload"
+commands:
+  noPermission: "&cYou have no permission to run this command"
+  wrongSyntax: "&cWrong syntax"
+connect4:
   invTitle: "Connect 4:"
   items:
     placeholder:
