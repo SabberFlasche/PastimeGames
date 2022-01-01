@@ -60,7 +60,7 @@ public class SettingsManager {
         Main.plugin().reloadConfig();
         this.loadConfig();
         this.checkVersion();
-        Main.plugin().getLogger().info("config.yml loaded");
+        Main.plugin().getLogger().info("config.yml reloaded");
     }
 
     private void checkVersion() {
