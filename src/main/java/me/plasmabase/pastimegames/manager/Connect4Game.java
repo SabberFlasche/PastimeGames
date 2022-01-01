@@ -166,9 +166,11 @@ public class Connect4Game extends Game {
         if (column == 0)
             return;
 
-        if (placing) {
+        if (!running)
             return;
-        }
+
+        if (placing)
+            return;
 
         if (!isTurn(player))
             return;
@@ -268,7 +270,7 @@ public class Connect4Game extends Game {
         }
         while (isSlotEmpty(currentSlot)) {
             int finalSlot = currentSlot;
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), ()-> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin(), ()-> {
                 if (isPlayer1) {
                     setItemWindow1(finalSlot, chipTrue);
                     setItemWindow2(finalSlot, chipFalse);
@@ -288,7 +290,7 @@ public class Connect4Game extends Game {
             }
         }
         int finalCurrentSlot = currentSlot - 9;
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin(), () -> {
             checkForWinner(isPlayer1, finalCurrentSlot);
             switchTurn();
             placing = false;
@@ -322,7 +324,8 @@ public class Connect4Game extends Game {
     }
 
     private void winnerLogic(boolean winner, @Nullable ArrayList<Integer> slots) {
-        Glow glow = new Glow(new NamespacedKey(Main.getPlugin(), "gloww"));
+        running = false;
+        Glow glow = new Glow(new NamespacedKey(Main.plugin(), "gloww"));
         try {
             for (int slot : slots) {
                 ItemStack stack1 = window1.getItem(slot);
@@ -341,7 +344,7 @@ public class Connect4Game extends Game {
             player1.playSound(player1.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
             player2.playSound(player2.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
         }
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getPlugin(), () -> endGame(winner ? player1 : player2), 60);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin(), () -> endGame(winner ? player1 : player2), 60);
     }
 
     private void checkForWinner(boolean p1or2, int slot) {
