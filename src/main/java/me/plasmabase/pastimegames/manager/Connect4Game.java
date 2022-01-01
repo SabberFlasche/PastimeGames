@@ -32,10 +32,8 @@ public class Connect4Game extends Game {
     protected Connect4Game(@NotNull Player player1, @NotNull Player player2) {
         this.player1 = player1;
         this.player2 = player2;
-        window1 = Bukkit.createInventory(null, 6 * 9, ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.invTitle")));
-        window2 = Bukkit.createInventory(null, 6 * 9, ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.invTitle")));
+        window1 = Bukkit.createInventory(null, 6 * 9, Main.settingsManager().connect4InventoryTitle());
+        window2 = Bukkit.createInventory(null, 6 * 9, Main.settingsManager().connect4InventoryTitle());
         determineFirstTurn();
         initMainWindow();
         updateTurnItems();
@@ -67,8 +65,7 @@ public class Connect4Game extends Game {
         //init placeholder-item
         ItemStack _void = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta _void_meta = _void.getItemMeta();
-        _void_meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.items.placeholder.displayName")));
+        _void_meta.setDisplayName(Main.settingsManager().connect4PlaceholderItemDisplayName());
         //ArrayList<String> _void_lore = new ArrayList<>();
         //_void_meta.setLore(_void_lore);
         _void.setItemMeta(_void_meta);
@@ -76,27 +73,23 @@ public class Connect4Game extends Game {
         //init turn-items
         turnTrue = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
         ItemMeta turnTrue_meta = turnTrue.getItemMeta();
-        turnTrue_meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.items.yourTurn.displayName")));
+        turnTrue_meta.setDisplayName(Main.settingsManager().connect4YourTurnItemDisplayName());
         turnTrue.setItemMeta(turnTrue_meta);
 
         turnFalse = new ItemStack(Material.GLASS_PANE);
         ItemMeta turnFalse_meta = turnFalse.getItemMeta();
-        turnFalse_meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.items.opponentsTurn.displayName")));
+        turnFalse_meta.setDisplayName(Main.settingsManager().connect4OpponentsTurnItemDisplayName());
         turnFalse.setItemMeta(turnFalse_meta);
 
         //init chip-items
         chipTrue = new ItemStack(Material.ENDER_PEARL);
         ItemMeta chipTrue_meta = chipTrue.getItemMeta();
-        chipTrue_meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.items.yourChipItem.displayName")));
+        chipTrue_meta.setDisplayName(Main.settingsManager().connect4YourChipItemDisplayName());
         chipTrue.setItemMeta(chipTrue_meta);
 
         chipFalse = new ItemStack(Material.SNOWBALL);
         ItemMeta chipFalse_meta = chipFalse.getItemMeta();
-        chipFalse_meta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
-                Main.getPlugin().getConfig().getString("connectfour.items.opponentsChipItem.displayName")));
+        chipFalse_meta.setDisplayName(Main.settingsManager().connect4OpponentsChipItemDisplayName());
         chipFalse.setItemMeta(chipFalse_meta);
 
         //init Player-Heads
@@ -326,14 +319,10 @@ public class Connect4Game extends Game {
      */
     @Override
     public void endGame(@Nullable Player winner) {
-        if (player1.getOpenInventory().getTitle().equalsIgnoreCase(
-                ChatColor.translateAlternateColorCodes('&',
-                        Main.getPlugin().getConfig().getString("connectfour.invTitle")))) {
+        if (player1.getOpenInventory().getTitle().equalsIgnoreCase(Main.settingsManager().connect4InventoryTitle())) {
             player1.closeInventory();
         }
-        if (player2.getOpenInventory().getTitle().equalsIgnoreCase(
-                ChatColor.translateAlternateColorCodes('&',
-                        Main.getPlugin().getConfig().getString("connectfour.invTitle")))) {
+        if (player2.getOpenInventory().getTitle().equalsIgnoreCase(Main.settingsManager().connect4InventoryTitle())) {
             player2.closeInventory();
         }
         GameManager.removeGame(this);
