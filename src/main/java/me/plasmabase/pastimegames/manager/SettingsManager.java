@@ -53,7 +53,7 @@ public class SettingsManager {
     /**
      * Reloads the config
      */
-    public void reload() {
+    public void reloadConfig() {
         Main.plugin().reloadConfig();
         this.loadConfig();
         this.checkVersion();
