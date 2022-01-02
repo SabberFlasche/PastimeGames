@@ -1,6 +1,6 @@
 package me.plasmabase.pastimegames.manager.Games;
 
-import me.plasmabase.pastimegames.Main;
+import me.plasmabase.pastimegames.PastimeGames;
 import me.plasmabase.pastimegames.helper.eventsystem.EventListener;
 import me.plasmabase.pastimegames.helper.eventsystem.EventManager;
 import me.plasmabase.pastimegames.helper.eventsystem.GameResult;
@@ -45,15 +45,19 @@ public class GameManager {
         if (player1.equals(player2)) {
             return null;
         }
-
+        Game game;
         switch (gameType) {
             case CONNECT4:
-                Connect4Game game = new Connect4Game(player1, player2);
-                games.add(game);
-                return game;
+                game = new Connect4Game(player1, player2);
+                break;
+            case TICTACTOE:
+                game = new TicTacToeGame(player1, player2);
+                break;
             default:
                 return null;
         }
+        games.add(game);
+        return game;
     }
 
     /**
@@ -79,15 +83,19 @@ public class GameManager {
         if (player1.equals(player2)) {
             return null;
         }
-
+        Game game;
         switch (gameType) {
             case CONNECT4:
-                Connect4Game game = new Connect4Game(player1, player2, customInvTitle);
-                games.add(game);
-                return game;
+                game = new Connect4Game(player1, player2, customInvTitle);
+                break;
+            case TICTACTOE:
+                game = new TicTacToeGame(player1, player2, customInvTitle);
+                break;
             default:
                 return null;
         }
+        games.add(game);
+        return game;
     }
 
     /**
@@ -102,7 +110,7 @@ public class GameManager {
      * @return SettingsManager of PastimeGamesAPI
      */
     public static @NotNull SettingsManager getSettingsManager() {
-        return Main.settingsManager();
+        return PastimeGames.settingsManager();
     }
 
     /**

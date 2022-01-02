@@ -1,6 +1,6 @@
 package me.plasmabase.pastimegames.events;
 
-import me.plasmabase.pastimegames.Main;
+import me.plasmabase.pastimegames.PastimeGames;
 import me.plasmabase.pastimegames.manager.Games.GameManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +13,9 @@ public class Inventory implements Listener {
     @EventHandler
     public void onInvClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
-        if (player.getOpenInventory().getTitle().equalsIgnoreCase(Main.settingsManager().connect4InventoryTitle())) {
+        String title = player.getOpenInventory().getTitle();
+        if (title.equalsIgnoreCase(PastimeGames.settingsManager().connect4InventoryTitle())
+                || title.equalsIgnoreCase(PastimeGames.settingsManager().tictactoeInventoryTitle())) {
             GameManager.onCloseInventory(player);
         }
     }
