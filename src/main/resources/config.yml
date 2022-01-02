@@ -1,7 +1,5 @@
 version: "0.0.2"
 reload-message: "&aConfig successfully reloaded"
-permissions:
-  reload: "pastimegames.reload"
 commands:
   noPermission: "&cYou have no permission to run this command"
   wrongSyntax: "&cWrong syntax"
