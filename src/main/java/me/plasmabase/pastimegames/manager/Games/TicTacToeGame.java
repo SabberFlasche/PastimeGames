@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -182,6 +183,11 @@ public class TicTacToeGame extends Game{
         }
     }
 
+    /**
+     * Checks if the Player even is in this game and then checks if the Player has to make the next move
+     * @param player Player to check
+     * @return true if the Player {@link TicTacToeGame#isInGame(Player) isInGame} and it is his turn to make a move
+     */
     @Override
     public boolean isTurn(@NotNull Player player) {
         if (isInGame(player)) {
@@ -191,6 +197,10 @@ public class TicTacToeGame extends Game{
         return false;
     }
 
+    /**
+     * Gets List of all Players who participate in this game
+     * @return {@link Array} of all Players
+     */
     @Override
     public @NotNull Player[] getPlayers() {
         Player[] list = new Player[2];
@@ -199,6 +209,10 @@ public class TicTacToeGame extends Game{
         return list;
     }
 
+    /**
+     * @param search player to search for
+     * @return true if the player is in this particular game
+     */
     @Override
     public boolean isInGame(@NotNull Player search) {
         for (Player player : getPlayers()) {
@@ -235,6 +249,11 @@ public class TicTacToeGame extends Game{
         updateTurnItems();
     }
 
+    /**
+     * Closes all inventories and removes the game from {@link GameManager#getAllGames()}.
+     * At the end the Event {@link GameManager#gameEnded} is called
+     * @param winner
+     */
     @Override
     public void endGame(@Nullable Player winner) {
         if (player1.getOpenInventory().getTitle().equalsIgnoreCase(PastimeGames.settingsManager().tictactoeInventoryTitle())) {
