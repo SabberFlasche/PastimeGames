@@ -7,14 +7,16 @@ commands:
   wrongSyntax: "&cWrong syntax"
 connect4:
   invTitle: "Connect 4:"
-  items:
-    placeholder:
-      displayName: ""
-    yourTurn:
-      displayName: "&aYour turn"
-    opponentsTurn:
-      displayName: "&fWait for your opponent to make a move"
-    yourChipItem:
-      displayName: ""
-    opponentsChipItem:
-      displayName: ""
+tictactoe:
+  invTitle: "TicTacToe:"
+items:
+  placeholder:
+    displayName: " "
+  yourTurn:
+    displayName: "&aYour turn"
+  opponentsTurn:
+    displayName: "&fWait for your opponent to make a move"
+  yourChipItem:
+    displayName: " "
+  opponentsChipItem:
+    displayName: " "
