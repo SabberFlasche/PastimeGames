@@ -4,6 +4,7 @@ import me.plasmabase.pastimegames.events.Inventory;
 import me.plasmabase.pastimegames.manager.Games.GameManager;
 import me.plasmabase.pastimegames.helper.Glow;
 import me.plasmabase.pastimegames.manager.Games.Game;
+import me.plasmabase.pastimegames.manager.Games.Items;
 import me.plasmabase.pastimegames.manager.SettingsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
@@ -12,11 +13,12 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Field;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public final class Main extends JavaPlugin {
+public final class PastimeGames extends JavaPlugin {
 
-    public static Main plugin;
-    public static Main plugin() {
+    public static PastimeGames plugin;
+    public static PastimeGames plugin() {
         return plugin;
     }
 
@@ -36,11 +38,14 @@ public final class Main extends JavaPlugin {
         registerGlow();
 
         settingsManager = new SettingsManager();
+        Items.initItems();
     }
 
     @Override
     public void onDisable() {
-        for (Game game : GameManager.getAllGames()) {
+        CopyOnWriteArrayList<Game> games = new CopyOnWriteArrayList<>();
+        games.addAll(GameManager.getAllGames());
+        for (Game game : games) {
             game.endGame(null);
         }
     }
