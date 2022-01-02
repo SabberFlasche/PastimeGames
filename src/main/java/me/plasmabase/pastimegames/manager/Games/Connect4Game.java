@@ -1,6 +1,6 @@
 package me.plasmabase.pastimegames.manager.Games;
 
-import me.plasmabase.pastimegames.Main;
+import me.plasmabase.pastimegames.PastimeGames;
 import me.plasmabase.pastimegames.helper.Glow;
 import me.plasmabase.pastimegames.helper.eventsystem.GameResultConnect4;
 import org.bukkit.*;
@@ -21,10 +21,6 @@ public class Connect4Game extends Game {
     private Inventory window2;
     private Player player1;
     private Player player2;
-    private ItemStack turnTrue;
-    private ItemStack turnFalse;
-    private ItemStack chipTrue;
-    private ItemStack chipFalse;
     private boolean turn;
     private boolean running;
     private boolean placing;
@@ -32,8 +28,8 @@ public class Connect4Game extends Game {
     protected Connect4Game(@NotNull Player player1, @NotNull Player player2) {
         this.player1 = player1;
         this.player2 = player2;
-        window1 = Bukkit.createInventory(null, 6 * 9, Main.settingsManager().connect4InventoryTitle());
-        window2 = Bukkit.createInventory(null, 6 * 9, Main.settingsManager().connect4InventoryTitle());
+        window1 = Bukkit.createInventory(null, 6 * 9, PastimeGames.settingsManager().connect4InventoryTitle());
+        window2 = Bukkit.createInventory(null, 6 * 9, PastimeGames.settingsManager().connect4InventoryTitle());
         determineFirstTurn();
         initMainWindow();
         updateTurnItems();
@@ -62,68 +58,25 @@ public class Connect4Game extends Game {
 
     @Override
     protected void initMainWindow() {
-        //init placeholder-item
-        ItemStack _void = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-        ItemMeta _void_meta = _void.getItemMeta();
-        _void_meta.setDisplayName(Main.settingsManager().connect4PlaceholderItemDisplayName());
-        //ArrayList<String> _void_lore = new ArrayList<>();
-        //_void_meta.setLore(_void_lore);
-        _void.setItemMeta(_void_meta);
-
-        //init turn-items
-        turnTrue = new ItemStack(Material.LIME_STAINED_GLASS_PANE);
-        ItemMeta turnTrue_meta = turnTrue.getItemMeta();
-        turnTrue_meta.setDisplayName(Main.settingsManager().connect4YourTurnItemDisplayName());
-        turnTrue.setItemMeta(turnTrue_meta);
-
-        turnFalse = new ItemStack(Material.GLASS_PANE);
-        ItemMeta turnFalse_meta = turnFalse.getItemMeta();
-        turnFalse_meta.setDisplayName(Main.settingsManager().connect4OpponentsTurnItemDisplayName());
-        turnFalse.setItemMeta(turnFalse_meta);
-
-        //init chip-items
-        chipTrue = new ItemStack(Material.ENDER_PEARL);
-        ItemMeta chipTrue_meta = chipTrue.getItemMeta();
-        chipTrue_meta.setDisplayName(Main.settingsManager().connect4YourChipItemDisplayName());
-        chipTrue.setItemMeta(chipTrue_meta);
-
-        chipFalse = new ItemStack(Material.SNOWBALL);
-        ItemMeta chipFalse_meta = chipFalse.getItemMeta();
-        chipFalse_meta.setDisplayName(Main.settingsManager().connect4OpponentsChipItemDisplayName());
-        chipFalse.setItemMeta(chipFalse_meta);
-
-        //init Player-Heads
-        ItemStack head_player1 =new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta head_player1_meta = (SkullMeta) head_player1.getItemMeta();
-        head_player1_meta.setDisplayName(player1.getName());
-        head_player1_meta.setOwningPlayer(player1);
-        head_player1.setItemMeta(head_player1_meta);
-
-        ItemStack head_player2 =new ItemStack(Material.PLAYER_HEAD);
-        SkullMeta head_player2_meta = (SkullMeta) head_player2.getItemMeta();
-        head_player2_meta.setDisplayName(player2.getName());
-        head_player2_meta.setOwningPlayer(player2);
-        head_player2.setItemMeta(head_player2_meta);
-
-
-
+        ItemStack playerHead1 = Items.playerHead(player1);
+        ItemStack playerHead2 = Items.playerHead(player2);
         //Column 1
-        this.setItemWindow1(0, head_player1);
-        this.setItemWindow2(0, head_player2);
-        this.setUniversalItem(9, _void);
+        this.setItemWindow1(0, playerHead1);
+        this.setItemWindow2(0, playerHead2);
+        this.setUniversalItem(9, Items._void());
         //Turn-item 1 - 18
         //Turn-item 2 - 27
-        this.setUniversalItem(36, _void);
-        this.setItemWindow1(45, head_player2);
-        this.setItemWindow2(45, head_player1);
+        this.setUniversalItem(36, Items._void());
+        this.setItemWindow1(45, playerHead2);
+        this.setItemWindow2(45, playerHead1);
 
         //Column 2
-        this.setUniversalItem(1, _void);
-        this.setUniversalItem(10, _void);
-        this.setUniversalItem(19, _void);
-        this.setUniversalItem(28, _void);
-        this.setUniversalItem(37, _void);
-        this.setUniversalItem(46, _void);
+        this.setUniversalItem(1, Items._void());
+        this.setUniversalItem(10, Items._void());
+        this.setUniversalItem(19, Items._void());
+        this.setUniversalItem(28, Items._void());
+        this.setUniversalItem(37, Items._void());
+        this.setUniversalItem(46, Items._void());
 
     }
 
@@ -141,15 +94,15 @@ public class Connect4Game extends Game {
 
     private void updateTurnItems() {
         if (turn) {
-            setItemWindow1(18, turnTrue);
-            setItemWindow1(27, turnTrue);
-            setItemWindow2(18, turnFalse);
-            setItemWindow2(27, turnFalse);
+            setItemWindow1(18, Items.turnTrue());
+            setItemWindow1(27, Items.turnTrue());
+            setItemWindow2(18, Items.turnFalse());
+            setItemWindow2(27, Items.turnFalse());
         }else {
-            setItemWindow1(18, turnFalse);
-            setItemWindow1(27, turnFalse);
-            setItemWindow2(18, turnTrue);
-            setItemWindow2(27, turnTrue);
+            setItemWindow1(18, Items.turnFalse());
+            setItemWindow1(27, Items.turnFalse());
+            setItemWindow2(18, Items.turnTrue());
+            setItemWindow2(27, Items.turnTrue());
         }
     }
 
@@ -270,13 +223,13 @@ public class Connect4Game extends Game {
         }
         while (isSlotEmpty(currentSlot)) {
             int finalSlot = currentSlot;
-            Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin(), ()-> {
+            Bukkit.getScheduler().scheduleSyncDelayedTask(PastimeGames.plugin(), ()-> {
                 if (isPlayer1) {
-                    setItemWindow1(finalSlot, chipTrue);
-                    setItemWindow2(finalSlot, chipFalse);
+                    setItemWindow1(finalSlot, Items.chipTrue());
+                    setItemWindow2(finalSlot, Items.chipFalse());
                 }else {
-                    setItemWindow2(finalSlot, chipTrue);
-                    setItemWindow1(finalSlot, chipFalse);
+                    setItemWindow2(finalSlot, Items.chipTrue());
+                    setItemWindow1(finalSlot, Items.chipFalse());
                 }
                 if (finalSlot > 10) {
                     setUniversalItem(finalSlot - 9, null);
@@ -290,7 +243,7 @@ public class Connect4Game extends Game {
             }
         }
         int finalCurrentSlot = currentSlot - 9;
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin(), () -> {
+        Bukkit.getScheduler().scheduleSyncDelayedTask(PastimeGames.plugin(), () -> {
             checkForWinner(isPlayer1, finalCurrentSlot);
             switchTurn();
             placing = false;
@@ -313,19 +266,21 @@ public class Connect4Game extends Game {
      */
     @Override
     public void endGame(@Nullable Player winner) {
-        if (player1.getOpenInventory().getTitle().equalsIgnoreCase(Main.settingsManager().connect4InventoryTitle())) {
+        if (player1.getOpenInventory().getTitle().equalsIgnoreCase(PastimeGames.settingsManager().connect4InventoryTitle())) {
             player1.closeInventory();
         }
-        if (player2.getOpenInventory().getTitle().equalsIgnoreCase(Main.settingsManager().connect4InventoryTitle())) {
+        if (player2.getOpenInventory().getTitle().equalsIgnoreCase(PastimeGames.settingsManager().connect4InventoryTitle())) {
             player2.closeInventory();
         }
         GameManager.removeGame(this);
-        GameManager.gameEnded.call(new GameResultConnect4(winner, this.getPlayers()));
+        try {
+            GameManager.gameEnded.call(new GameResultConnect4(winner, this.getPlayers()));
+        }catch (IllegalStateException ignored) {}
     }
 
     private void winnerLogic(boolean winner, @Nullable ArrayList<Integer> slots) {
         running = false;
-        Glow glow = new Glow(new NamespacedKey(Main.plugin(), "gloww"));
+        Glow glow = new Glow(new NamespacedKey(PastimeGames.plugin(), "gloww"));
         try {
             for (int slot : slots) {
                 ItemStack stack1 = window1.getItem(slot);
@@ -344,7 +299,7 @@ public class Connect4Game extends Game {
             player1.playSound(player1.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
             player2.playSound(player2.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2, 1);
         }
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.plugin(), () -> endGame(winner ? player1 : player2), 60);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(PastimeGames.plugin(), () -> endGame(winner ? player1 : player2), 60);
     }
 
     private void checkForWinner(boolean p1or2, int slot) {
@@ -360,7 +315,7 @@ public class Connect4Game extends Game {
         //Rows
         ArrayList<Integer> tmpSlots = new ArrayList<>();
         int currentSlot = slot;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot++;
             if (currentSlot > 53) {
@@ -369,7 +324,7 @@ public class Connect4Game extends Game {
         }
         currentSlot = slot;
         currentSlot--;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot--;
             if (currentSlot < 2) {
@@ -383,7 +338,7 @@ public class Connect4Game extends Game {
         //Columns
         tmpSlots = new ArrayList<>();
         currentSlot = slot;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot += 9;
             if (currentSlot > 53) {
@@ -397,7 +352,7 @@ public class Connect4Game extends Game {
         //diagonal 45°
         tmpSlots = new ArrayList<>();
         currentSlot = slot;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot += 8;
             if (currentSlot > 53) {
@@ -406,7 +361,7 @@ public class Connect4Game extends Game {
         }
         currentSlot = slot;
         currentSlot -= 8;
-        while (currentSlot > 1 && inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (currentSlot > 1 && inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot -= 8;
             if (currentSlot < 2) {
@@ -420,7 +375,7 @@ public class Connect4Game extends Game {
         //diagonal -45°
         tmpSlots = new ArrayList<>();
         currentSlot = slot;
-        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot += 10;
             if (currentSlot > 53) {
@@ -429,7 +384,7 @@ public class Connect4Game extends Game {
         }
         currentSlot = slot;
         currentSlot -= 10;
-        while (currentSlot > 1 && inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(chipTrue)) {
+        while (currentSlot > 1 && inventory.getItem(currentSlot) != null && inventory.getItem(currentSlot).equals(Items.chipTrue())) {
             tmpSlots.add(currentSlot);
             currentSlot -= 10;
             if (currentSlot < 2) {
