@@ -1,6 +1,6 @@
 name: PastimeGames
 version: '${project.version}'
-main: me.plasmabase.pastimegames.Main
+main: me.plasmabase.pastimegames.PastimeGames
 api-version: 1.13
 prefix: PastimeGames
 authors: [ PlasmaBase ]
