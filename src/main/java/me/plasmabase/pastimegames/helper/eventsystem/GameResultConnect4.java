@@ -1,5 +1,6 @@
 package me.plasmabase.pastimegames.helper.eventsystem;
 
+import me.plasmabase.pastimegames.manager.Games.GameType;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,5 +23,10 @@ public class GameResultConnect4 extends GameResult{
     @Override
     public Player[] getPlayers() {
         return players;
+    }
+
+    @Override
+    public @NotNull GameType getGameType() {
+        return GameType.CONNECT4;
     }
 }
